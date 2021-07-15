@@ -1,0 +1,16 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center" style="margin-top: 63px !important;">
+
+  <div>
+    <mat-card id="logged"> Welcome {{currentUserName}}!</mat-card>
+  </div>
+
+</div>
+
+<div>
+  <button mat-raised-button color="primary" class="btn-add" (click)="openCreateRoomModal()">
+    <mat-icon>add</mat-icon>
+    Criar sala
+  </button>
+</div>
+
+<button mat-stroked-button color="warn" class="btn-logout" (click)="logout()">Logout</button>

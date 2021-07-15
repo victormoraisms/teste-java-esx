@@ -72,7 +72,7 @@
               "browserTarget": "esx-test:build:production"
             },
             "development": {
-              "browserTarget": "esx-test:build:development"
+              "browserTarget": "esx-test:build:development",
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,10 @@
+package com.application.application.domain.repository;
+
+import com.application.application.domain.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User, Long> {
+
+  User findByEmail(String email);
+
+}

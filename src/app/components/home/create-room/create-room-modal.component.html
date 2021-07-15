@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>
+  Nova Sala
+</h1>
+
+<div mat-dialog-content>
+
+  <div class="row">
+    <mat-form-field appearence="fill" style="width: 100% !important; height: 100px !important;">
+      <mat-label> Nome da sala </mat-label>
+      <textarea matInput [(ngModel)]="name" required></textarea>
+    </mat-form-field>
+  </div>
+
+</div>
+
+<div  mat-dialog-actions align="end">
+  <button mat-raised-button  color="primary" (click)="createRoom()">Criar Sala</button>
+  <button mat-raised-button  color="secondary" (click)="closeModal()">Cancelar</button>
+</div>
