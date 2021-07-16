@@ -1,6 +1,6 @@
 # EsxTest
 
-Projeto para teste de seleção da [ESX](https://www.esx.com.br/) feito em Java e Angular;
+Projeto para teste de seleção da [ESX](https://www.esx.com.br/) feito utilizando SpringBoot como framework do Java no back-end, e Angular no front-end;
 
 ## Inicializando a aplicação Front End
 
