@@ -1,27 +1,20 @@
 # EsxTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+Projeto para teste de seleção da [ESX](https://www.esx.com.br/) feito em Java e Angular;
 
-## Development server
+## Inicializando a aplicação Front End
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Execute `ng serve` a partir da raiz do projeto (esx-test). Navegue até `http://localhost:4200/`. O aplicativo irá recarregar automaticamente se você alterar qualquer arquivo de recurso.
 
-## Code scaffolding
+## Inicializando a aplicação Back End (API)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Inicialize a `aplicação Spring Boot` para começar a consumir a API.
 
-## Build
+## Banco
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+O banco de dados utilizado é o `H2`. Para acessar seu console e realizar consultas basta navegar até `http://localhost:8080/h2`.
 
-## Running unit tests
+## Swagger
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Foram inseridas as dependências referentes ao `swagger` e ao `swagger-ui` para fins de documentação da API, e troubleshooting. Para acessar a UI basta navegar até `http://localhost:8080/swagger-ui.html`
+enquanto a aplicação estiver de pé.
