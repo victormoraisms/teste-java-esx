@@ -1,8 +1,12 @@
 <mat-toolbar color="primary" class="app-header">
-  <div><a href="#" target="_blank" class="positronx">Sleck</a></div>
-  <span class="nav-tool-items">
+  <div><a (click)="goHome()" target="_blank" class="positronx">Sleck</a></div>
+  <span class="nav-tool-items" *ngIf="!userLogged()">
     <a mat-button routerLink="signin" routerLinkActive="active">Signin</a>
     <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Signup</a>
+  </span>
+  <span class="nav-tool-items" *ngIf="userLogged()">
+    <h6>Olá {{user.username}}</h6>
+    <a mat-button (click)="logout()">Logout</a>
   </span>
 </mat-toolbar>
 

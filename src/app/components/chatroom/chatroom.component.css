@@ -1,3 +1,15 @@
-.teste{
-  margin-top: 200px !important;
+
+.users {
+  top: 100px!important;
+}
+
+.btn-leave {
+  display: block;
+  position: fixed;
+  left: 30px;
+  top: 500px;
+}
+
+.ownMessage{
+  left: 250px !important;
 }

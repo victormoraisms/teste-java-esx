@@ -5,35 +5,45 @@ import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {CreateRoomModalComponent} from "./create-room/create-room-modal.component";
+import {ChatroomService} from "../../services/chatroom.service";
+import {IChatroom} from "../../model/chatroom.model";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
 
-  currentUserName!: String;
-  private currentUserNameSubscription!: Subscription
-  loggedIn: boolean = false;
+  rooms: any[] = []
+
 
   constructor(private userService: UserService,
-              private matDialog: MatDialog) {
+              private matDialog: MatDialog,
+              private router: Router,
+              private chatroomService : ChatroomService) {
 
   }
 
   ngOnInit(): void {
 
+    this.handleRooms();
+
   }
 
 
-  ngAfterViewInit(): void {
-    this.currentUserNameSubscription = this.userService.currentUserName.subscribe(name => {
-      if(name != null){
-        this.currentUserName = name;
-        this.loggedIn = true;
-      }
+  handleRooms() {
+    this.getRooms()
+    setInterval(()=>{
+      this.getRooms()
+    }, 3000);
+  }
 
+  getRooms(){
+    this.chatroomService.getRooms().subscribe( result => {
+      if(result != null){
+        this.rooms = result;
+      }
     })
   }
 
@@ -47,6 +57,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     dialogConfig.height = "auto"
     dialogConfig.id = 'create-room-dialog'
     this.matDialog.open(CreateRoomModalComponent, dialogConfig)
+  }
+
+  openRoom(id:number){
+    this.router.navigate(['/chat/' + id])
   }
 
 

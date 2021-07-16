@@ -37,7 +37,7 @@ public class Chatroom {
 
   @PrePersist
   protected void onCreate() {
-    if (Objects.isNull(this.status)) {
+    if (this.status == 0) {
       this.status = 1;
     }
   }

@@ -13,21 +13,13 @@ import {Subscription} from "rxjs";
 })
 export class CreateRoomModalComponent implements OnInit {
 
-  private currentUserIdSubscription!: Subscription
-
   name!: string;
   chatId: any;
-  userId: any;
 
   constructor(private dialogRef: MatDialogRef<CreateRoomModalComponent>,
               private chatRoomService : ChatroomService,
-              private router : Router,
-              private userService: UserService) {
-    this.currentUserIdSubscription =  userService.currentUserId.subscribe( id => {
-        if(id != null){
-          this.userId = id;
-        }
-      });
+              private router : Router) {
+
   }
 
   ngOnInit(): void {
@@ -39,7 +31,9 @@ export class CreateRoomModalComponent implements OnInit {
 
   createRoom(){
 
-    this.chatRoomService.createRoom(this.name, this.userId).subscribe( result => {
+    const currentUser = JSON.parse(localStorage.getItem('user')!);
+
+    this.chatRoomService.createRoom(this.name, currentUser.id).subscribe( result => {
 
       if(result != null){
         this.chatId = result;

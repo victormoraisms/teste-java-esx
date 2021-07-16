@@ -36,4 +36,28 @@ public class UserController {
 
   }
 
+  @PutMapping("/setChatroom/{userId}/{roomId}")
+  public ResponseEntity setChatroom(@PathVariable("userId") Long userId, @PathVariable("roomId") Long roomId){
+
+    userService.setChatroom(userId, roomId);
+
+    return ResponseEntity.status(HttpStatus.OK).body("");
+  }
+
+  @PutMapping("/leaveRoom/{userId}")
+  public ResponseEntity leaveRoom(@PathVariable("userId") Long userId){
+
+    userService.leaveRoom(userId);
+
+    return ResponseEntity.status(HttpStatus.OK).body("");
+  }
+
+  @GetMapping("/checkValidUser/{username}")
+  public ResponseEntity<Boolean> checkValidUser(@PathVariable("username") String username){
+
+
+    return ResponseEntity.status(HttpStatus.OK).body(userService.checkValidUser(username));
+  }
+
+
 }

@@ -10,7 +10,7 @@
 
         <div>
           <mat-form-field class="example-full-width">
-            <input matInput formControlName="username" id="username" [required]="true" placeholder="Username">
+            <input matInput formControlName="username" id="username" [required]="true" placeholder="Username" (blur)="checkUsername()">
           </mat-form-field>
         </div>
 
@@ -34,3 +34,11 @@
     </form>
   </mat-card>
 </div>
+
+<ng-template #userAlreadyUsed>
+  <h2 matDialogTitle>Alerta</h2>
+  <p matDialogContent>Nome de usuário já se encontra em uso.</p>
+  <mat-dialog-actions align="end">
+    <button mat-button matDialogClose>Fechar</button>
+  </mat-dialog-actions>
+</ng-template>

@@ -54,7 +54,7 @@ export class UserService {
       }));
   }
 
-  private getCurrentUser(): Observable<any> {
+  public getCurrentUser(): Observable<any> {
     return this.userSubject.asObservable();
   }
 
@@ -64,10 +64,16 @@ export class UserService {
     this.router.navigate(['/signin']);
   }
 
-  // public checkValidUsername(username){
-  //   let params = new HttpParams()
-  //     .set('username', username)
-  //   return this.httpClient.get(this.apiUrl + '/e-graph-server/profile/checkValidUser', { params: params });
-  // }
+  setRoom(userId: number, roomId: number){
+    return this.httpClient.put<any[]>(this.apiUrl+ '/user/setChatroom/' + userId + "/" + roomId, {} );
+  }
+
+  leaveRoom(userId: number){
+    return this.httpClient.put<any[]>(this.apiUrl + '/user/leaveRoom/' + userId, {})
+  }
+
+  public checkValidUsername(username: string){
+    return this.httpClient.get<boolean>(this.apiUrl + '/user/checkValidUser/' + username);
+  }
 
 }

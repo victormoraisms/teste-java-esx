@@ -1,3 +1,41 @@
-<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center" style="margin-top: 63px !important;">
-  <p id="teste">chatroom works!</p>
-</div>
+<mat-grid-list cols="3" rowHeight="200px">
+
+  <mat-grid-tile [colspan]="3"> </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="3" style="overflow-y: visible;">
+      <mat-list role="list" style="height: 100%; margin-top: 200px" >
+        <mat-list-item *ngFor="let message of messages" role="listitem" style="padding: 20px;" [ngClass]="(isOwnMessage(message.senderUsername)? 'ownMessage' : '')">
+
+          <mat-card class="example-card" style="height: 100%" >
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{message.message}} </mat-card-title>
+              <mat-card-subtitle>{{message.senderUsername}} - {{message.dhMessage.toString() | date:'dd/MM/yyyy HH:mm:ss'}}</mat-card-subtitle>
+            </mat-card-header>
+          </mat-card>
+        </mat-list-item>
+      </mat-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile [rowspan]="3" class="users">
+    <div>
+        <h2 style="text-align: center; padding-top: 30px">Usuários</h2>
+        <mat-list role="list" style="height: 100%">
+          <mat-list-item *ngFor="let user of users" role="listitem" style="padding: 20px;">
+              <mat-list-item>{{user.username}}</mat-list-item>
+              <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+    </div>
+
+  </mat-grid-tile>
+
+  <div style="position: fixed; bottom: 20px; width: 100%; background-color: snow ">
+    <form (ngSubmit)="sendMessage()" [formGroup]='formMessage' style="width: 100%; display: flex;flex-direction: row">
+      <input formControlName='message' mat-input placeholder="Type message.." class="form-control" style="width: 100%; margin: 20px">
+      <button type="submit" style="margin: 20px;">Send</button>
+    </form>
+
+  </div>
+
+</mat-grid-list>
+<button mat-stroked-button color="warn" class="btn-leave" (click)="goHome()">Sair</button>
