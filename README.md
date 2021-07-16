@@ -4,7 +4,9 @@ Projeto para teste de seleção da [ESX](https://www.esx.com.br/) feito utilizan
 
 ## Inicializando a aplicação Front End
 
-Execute `ng serve` a partir da raiz do projeto (esx-test). Navegue até `http://localhost:4200/`. O aplicativo irá recarregar automaticamente se você alterar qualquer arquivo de recurso.
+Primeiramente é necessário ter o [NodeJS](https://nodejs.org/en/download/) instalado em sua máquina, e executado `npm install` na raiz do projeto.
+
+Execute `ng serve` a partir da raiz do projeto (teste-java-esx). Navegue até `http://localhost:4200/`. O aplicativo irá recarregar automaticamente se você alterar qualquer arquivo de recurso.
 
 ## Inicializando a aplicação Back End (API)
 
