@@ -21,11 +21,6 @@ export class ChatroomService {
 
   createRoom(name: string, id: number){
 
-    // const httpOptions = {
-    //   params: new HttpParams()
-    //     .set('name', name)
-    //     .set('id', id)
-    // }
     let params = new HttpParams().set('name', name).set('id', id);
 
     return this.httpClient.post<any[]>(this.apiUrl + '/chatroom/create/' + name + "/" + id , null)

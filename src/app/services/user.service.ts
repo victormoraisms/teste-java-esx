@@ -15,8 +15,6 @@ export class UserService {
 
   public currentUserNameBehavior: BehaviorSubject<String> = new BehaviorSubject<String>("");
   public currentUserIdBehavior: BehaviorSubject<String> = new BehaviorSubject<String>("");
-  currentUserName = this.currentUserNameBehavior.asObservable();
-  currentUserId = this.currentUserIdBehavior.asObservable();
 
   constructor(
     @Inject('BASE_API_URL') private apiUrl : string,
@@ -37,7 +35,7 @@ export class UserService {
     //return this.httpClient.post(this.apiUrl + '/user/create', {newUser: newUser});
     return this.httpClient.post<IUser>(this.apiUrl + '/user/create', newUser)
       .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        // store user details in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
         return user;
@@ -47,7 +45,7 @@ export class UserService {
   login(email: any, password: any) {
     return this.httpClient.post<IUser>(this.apiUrl + '/user/authenticate', { email, password })
       .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        // store user details in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
         return user;
@@ -61,6 +59,8 @@ export class UserService {
   logout() {
     // remove user from local storage and set current user to null
     localStorage.removeItem('user');
+    //could'nt set null here
+    //this.userSubject.next(null)
     this.router.navigate(['/signin']);
   }
 
