@@ -45,6 +45,14 @@ public class ChatroomController {
     return ResponseEntity.status(HttpStatus.OK).body(chatroomService.sendMessage(message));
 
   }
+  @PostMapping("/deleteRoom/{roomId}")
+  public ResponseEntity<String> deleteRoom(@PathVariable("roomId") Long roomId){
+
+    chatroomService.deleteRoom(roomId);
+
+    return ResponseEntity.ok().body("");
+
+  }
 
   @GetMapping("/getCurrentUsers/{roomId}")
   public ResponseEntity<List<UserDTO>> getCurrentUsers(@PathVariable("roomId") Long roomId){

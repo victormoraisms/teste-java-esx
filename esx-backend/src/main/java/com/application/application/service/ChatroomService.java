@@ -62,6 +62,14 @@ public class ChatroomService {
 
   }
 
+  public void deleteRoom(Long roomId){
+
+    Optional<Chatroom> room = chatroomRepository.findById(roomId);
+
+    if(room != null) chatroomRepository.delete(room.get());
+
+  }
+
   public List<MessageDTO> getRoomMessages(Long roomId){
 
     List<Message> messages = messageRepository.getMessagesByRoomId(roomId);
